@@ -41,4 +41,7 @@ class UsersController < ApplicationController
         
           erb :"/users/profilepage"
       end
+       get "/logout" do 
+          session[:user_id].clear
+       end
 end
