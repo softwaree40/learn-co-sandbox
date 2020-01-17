@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
      
-     get '/users/signup' do
-        
-        erb :signup 
-  end
-  
+     # Shows Sign Up Page
+     get '/signup' do
+        erb :'users/signup' 
+     end
+     
+     post '/signup' do 
+       binding.pry
+       redirect '/login'
+     end
+    
 end
