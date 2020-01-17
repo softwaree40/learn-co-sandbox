@@ -31,13 +31,13 @@ class UsersController < ApplicationController
         if users.authenticate(params[:user][:password]) 
         # if user succefully logs in save user id to session
          session[:user_id] = users.id
-         binding.pry
+         redirect '/profilepage'
        else
          redirect "/login"
        end
          
       end
-      get "/users/profilepage" do 
+      get "/profilepage" do 
         
           erb :"/users/profilepage"
       end
