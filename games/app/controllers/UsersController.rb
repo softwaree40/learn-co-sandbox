@@ -26,7 +26,7 @@ class UsersController < ApplicationController
      
      # Login Form 
       get "/login" do
-       
+        binding.pry
          
       end
       
