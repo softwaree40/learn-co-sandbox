@@ -15,27 +15,30 @@ class UsersController < ApplicationController
         else
           #if test pass create instance 
           users = User.create(params[:user])
-          #Need to log them in
-          
-      
           redirect '/login'
         end
           
      end
-     
-     
      # Login Form 
       get "/login" do
-        binding.pry
-         
+        
+        erb :"/users/login" 
       end
       
       post "/login" do 
-        # check form validation 
-        
-        #check if user is real user in your database and password passes 
-        
-         # if user succefully logs in save user id to session
+         #check if user is real user in your database and password passes
+        users = User.find_by(username: params[:user][:username])
+        if users.authenticate(params[:user][:password]) 
+        # if user succefully logs in save user id to session
          session[:user_id] = users.id
+         binding.pry
+       else
+         redirect "/login"
+       end
+         
+      end
+      get "/users/profilepage" do 
+        
+          erb :"/users/profilepage"
       end
 end
