@@ -7,8 +7,25 @@ class ReviewsController < ApplicationController
   
    post '/games/:id/review' do 
      game = Game.find(params[:id])
-     Review.create(game: game, comment: params[:comment])
+     Review.create(game: game, comment: params[:comment], user: current_user )
      redirect "/games/#{game.id}"
    end
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   helpers do 
+    def current_user
+       User.find_by(id: session[:user_id])
+    end
+  end
   
 end

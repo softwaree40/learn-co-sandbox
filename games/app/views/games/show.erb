@@ -6,7 +6,11 @@
 
 <ul> 
   <%@game.reviews.each do |review|%>
-    <%= review.comment %>
+    <li>
+      <%#binding.pry%>
+      <%= review.comment %> - <small><em><%= !!review.user ? review.user.username.capitalize : "" %></em></small>
+    </li>
+    <br>
   <%end%>
 </ul>
 <br><br>

@@ -9,6 +9,18 @@ class GamesController < ApplicationController
       @game = Game.find_by(id: params[:id])
       erb :'games/show'
     end
+    
+    get '/my-games' do 
+      @user = current_user
+      erb :'games/user_games_index'
+    end
   
   
+  
+  
+  helpers do 
+    def current_user
+       User.find_by(id: session[:user_id])
+    end
+  end
 end
