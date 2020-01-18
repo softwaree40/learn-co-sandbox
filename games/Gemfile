@@ -11,10 +11,17 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem 'tux'
+gem 'faker', '~> 1.6', '>= 1.6.6'
 
 group :test do
   gem 'rspec'
   gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+end
+
+group :development do 
+  
+  gem 'rubocop', '~> 0.39.0'
+  
 end

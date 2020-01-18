@@ -38,11 +38,28 @@ class UsersController < ApplicationController
          
       end
       get "/profilepage" do 
-        
-          erb :"/users/profilepage"
+          @users = current_user
+          #binding.pry
+        erb :"/users/profilepage"
       end
-       get "/logout" do 
-          session[:user_id].clear
-         erb:"/login"
-      end
+  get "/logout" do 
+      session[:user_id].clear
+          
+    erb:"/login"
+  end
+  
+  
+  
+  
+  
+  
+  
+  
+  helpers do 
+    def current_user
+       User.find_by(id: session[:user_id])
+    end
+  end
+    
+  
 end
