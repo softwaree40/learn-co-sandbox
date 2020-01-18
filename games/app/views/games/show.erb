@@ -2,7 +2,14 @@
 <br><br><br><br><br><br><br><br><br><br><br>
 
 <p>Comments:</p>
-<ul>
-  
+
+
+<ul> 
+  <%@game.reviews.each do |review|%>
+    <%= review.comment %>
+  <%end%>
 </ul>
-<a href="games/<%=@game.id%>/review/new"></a>
+<br><br>
+
+
+<a href="/games/<%=@game.id%>/review/new">Add Comment</a>
