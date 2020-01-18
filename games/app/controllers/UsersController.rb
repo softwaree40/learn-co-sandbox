@@ -43,5 +43,6 @@ class UsersController < ApplicationController
       end
        get "/logout" do 
           session[:user_id].clear
-       end
+         erb:"/login"
+      end
 end
