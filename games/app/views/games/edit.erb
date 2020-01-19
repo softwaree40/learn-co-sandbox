@@ -1,7 +1,7 @@
 <h1>Edit Review for: (<%=@game.title%>)</h1>
 
 <form action="/games/<%=@game.id%>/review" method="Post">
-  <textarea style="height: 215px; width: 513px;" name="comment" placeholder="Place Your Review In Here"></textarea>
+  <textarea style="height: 215px; width: 513px;" name="comment" value = "<%=@game.comment%>"placeholder="Place Your Review In Here"></textarea>
   <br>
-  <input type="submit" value="Add Comment">
+  <input type="submit" value="Edit comment">
 </form>
