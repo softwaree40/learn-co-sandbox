@@ -11,15 +11,17 @@ class ReviewsController < ApplicationController
      redirect "/games/#{game.id}"
    end
      
-     get "/games/:id/edit" do 
-      @game = Game.find(params[:id])
-      erb :'/games/edit'
+    get "/games/:id/edit" do 
+      game = Game.find(params[:id])
+      @review = Review.find_by(game: game, user: current_user)
+      erb :"games/edit"
    end
    
    patch "/games/:id" do
-       
-      game = Game.find(params[:id])
-      redirect '/games'
+       game = Game.find(params[:id])
+       review = Review.find_by(game: game, user: current_user)
+       review.update(comment: params[:comment])
+      redirect "/games/#{game.id}"
    end
    
    
