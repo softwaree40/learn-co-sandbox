@@ -1,23 +1,24 @@
 class ReviewsController < ApplicationController
       
   get '/games/:id/review/new' do 
-      @game = Game.find(params[:id])
+      @game = Game.find_by(id: params[:id])
       erb :'reviews/new'
   end
   
    post '/games/:id/review' do 
-     game = Game.find(params[:id])
+     game = Game.find_by(id: params[:id])
      Review.create(game: game, comment: params[:comment], user: current_user )
      redirect "/games/#{game.id}"
    end
      
      get "/games/:id/edit" do 
-     
-      erb :"/games/edit"
+      @game = Game.find(params[:id])
+      erb :'/games/edit'
    end
    
-   patch "/games/:id" do 
-      @game = Game.find(params[:id])
+   patch "/games/:id" do
+       
+      game = Game.find(params[:id])
       redirect '/games'
    end
    
