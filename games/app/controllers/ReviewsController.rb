@@ -13,8 +13,10 @@ class ReviewsController < ApplicationController
    
    
    
-   
-   
+   patch "/games/:id" do 
+      @game = Game.find(params[:id])
+      redirect '/games'
+   end
    
    
    
