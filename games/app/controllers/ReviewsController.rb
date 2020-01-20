@@ -10,8 +10,11 @@ class ReviewsController < ApplicationController
      Review.create(game: game, comment: params[:comment], user: current_user )
      redirect "/games/#{game.id}"
    end
-   
-   
+     
+     get "/games/:id/edit" do 
+     
+      erb :"/games/edit"
+   end
    
    patch "/games/:id" do 
       @game = Game.find(params[:id])

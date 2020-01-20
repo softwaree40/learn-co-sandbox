@@ -9,6 +9,9 @@
     <li>
       <%#binding.pry%>
       <%= review.comment %> - <small><em><%= !!review.user ? review.user.username.capitalize : "" %></em></small>
+      <%if @user_review_ids.include? review.id %>
+        <a href="games/<%=review.game.id%>/edit">edit</a>
+      <%end%>
     </li>
     <br>
   <%end%>
