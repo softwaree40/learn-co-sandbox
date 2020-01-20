@@ -1,19 +1,40 @@
+<style>
+  .delete_btn{
+    border: none;
+    cursor: pointer;
+    color: purple;
+    background-color: white;
+    text-decoration: underline;
+  }
+</style>
+
 <h1><%=@game.title.capitalize%></h1>
-<br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br>
 
 <p>Comments:</p>
 
 
 <ul> 
   <%@game.reviews.each do |review|%>
+  
     <li>
-      <%#binding.pry%>
       <%= review.comment %> - <small><em><%= !!review.user ? review.user.username.capitalize : "" %></em></small>
+      
+      <!--Edit And Delete Actions-->
       <%if @user_review_ids.include? review.id %>
-        <a href="/games/<%=review.game.id%>/edit">edit</a>
+        <!--Edit-->
+        <a href="/games/<%=review.game.id%>/review/edit">edit</a>
+        
+        <!--Delete-->
+        <form action="/games/<%=review.game.id%>/review/delete" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <input class="delete_btn" type="submit" value="Delete">
+        </form>
       <%end%>
+      
     </li>
     <br>
+    
   <%end%>
 </ul>
 <br><br>

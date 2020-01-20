@@ -1,6 +1,6 @@
 <h1>Edit Review for: (<%=@review.game.title%>)</h1>
  
-<form action="/games/<%=@review.game.id%>" method="Post">
+<form action="/games/<%=@review.game.id%>/review" method="Post">
   <input type="hidden" name="_method" value="PATCH">
   <textarea style="height: 215px; width: 513px;" name="comment" placeholder="Place Your Review In Here"><%=@review.comment%>
   </textarea>
