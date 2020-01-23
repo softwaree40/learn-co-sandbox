@@ -11,20 +11,34 @@ class ReviewsController < ApplicationController
      redirect "/games/#{game.id}"
    end
      
+
     get "/games/:id/review/edit" do 
-      @review = find_users_review(params[:id])
-      erb :"games/edit"
+       @review = find_users_review
+      redirect "/games/#{params[:id]}" if @review.nil?
+      
+      erb :'/games/review/edit'
    end
    
    patch "/games/:id/review" do
-      review = find_users_review(params[:id])
+      review = find_users_review
       review.update(comment: params[:comment])
       redirect "/games/#{review.game.id}"
    end
    
-   delete '/games/:id/review/delete' do
-      find_users_review(params[:id]).destroy 
+    delete '/games/:id/review/delete' do
+      find_users_review.destroy 
       redirect "/games/#{params[:id]}"
+    end
+    
+    get "/games/:id/edit" do 
+      @game = Game.find(params[:id])
+      erb :'/games/edit'
+    end
+   
+   
+   patch "/games/:id" do
+      game = Game.find(params[:id])
+      redirect '/games'
    end
    
    
@@ -34,14 +48,14 @@ class ReviewsController < ApplicationController
    
    
    helpers do 
-    def current_user
-       User.find_by(id: session[:user_id])
+      def current_user
+         User.find_by(id: session[:user_id])
+      end
+      
+      def find_users_review
+        game = Game.find(params[:id])
+        Review.find_by(game: game, user: current_user)
+      end
     end
-    
-    def find_users_review(game_id)
-      game = Game.find(game_id)
-      Review.find_by(game: game, user: current_user)
-    end
-  end
   
 end

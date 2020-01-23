@@ -22,6 +22,7 @@
       
       <!--Edit And Delete Actions-->
       <%if @user_review_ids.include? review.id %>
+
         <!--Edit-->
         <a href="/games/<%=review.game.id%>/review/edit">edit</a>
         
@@ -30,6 +31,9 @@
           <input type="hidden" name="_method" value="DELETE">
           <input class="delete_btn" type="submit" value="Delete">
         </form>
+
+        <!--<a href="/games/<%#=review.game.id%>/edit">edit</a>-->
+
       <%end%>
       
     </li>
