@@ -15,10 +15,9 @@ ActiveRecord::Schema.define(version: 20200120174710) do
 
   create_table "games", force: :cascade do |t|
     t.string   "title"
-<<<<<<< HEAD
-=======
+
     t.string   "comment"
->>>>>>> c59add96a9671a5187433f11b603d31402da1719
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
