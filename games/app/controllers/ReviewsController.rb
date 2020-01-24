@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
        @review = find_users_review
       redirect "/games/#{params[:id]}" if @review.nil?
       
-      erb :'/games/review/edit'
+      erb :'/games/edit'
    end
    
    patch "/games/:id/review" do
