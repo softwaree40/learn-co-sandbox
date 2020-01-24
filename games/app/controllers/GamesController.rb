@@ -6,9 +6,10 @@ class GamesController < ApplicationController
     end
     
     get '/games/:id' do
+       
       @game = Game.find_by(id: params[:id])
-      user = current_user
-      @user_review_ids = user.reviews.map{|review| review.id}
+      @user_review_ids = current_user.reviews.map{|review| review.id}
+    
       erb :'games/show'
     end
     
