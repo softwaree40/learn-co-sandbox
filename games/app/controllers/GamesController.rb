@@ -2,7 +2,9 @@ class GamesController < ApplicationController
       
     get '/games' do
       @games = Game.all
+       redirect_if_not_login
       erb :'games/index'
+      
     end
     
     get '/games/:id' do
@@ -19,11 +21,4 @@ class GamesController < ApplicationController
     end
   
   
-  
-  
-  helpers do 
-    def current_user
-       User.find_by(id: session[:user_id])
-    end
-  end
 end

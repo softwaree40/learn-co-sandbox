@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   post "/login" do 
      #check if user is real user in your database and password passes
     users = User.find_by(username: params[:user][:username])
-    if users.authenticate(params[:user][:password]) 
+    if users && users.authenticate(params[:user][:password]) 
     # if user succefully logs in save user id to session
      session[:user_id] = users.id
      redirect '/profilepage'
@@ -48,12 +48,7 @@ class UsersController < ApplicationController
     redirect "/login"
   end
   
-  helpers do 
-    def current_user
-       User.find_by(id: session[:user_id])
-    end
-  end
-    
+  
   
 end
 

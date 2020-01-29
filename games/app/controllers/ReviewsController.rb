@@ -47,19 +47,4 @@ class ReviewsController < ApplicationController
    
    
    
-   
-   
-   
-   
-   helpers do 
-      def current_user
-         User.find_by(id: session[:user_id])
-      end
-      
-      def find_users_review
-        game = Game.find(params[:id])
-        Review.find_by(game: game, user: current_user)
-      end
-    end
-  
 end
